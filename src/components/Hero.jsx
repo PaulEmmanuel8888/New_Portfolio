@@ -16,6 +16,12 @@ const Hero = () => {
           alt="Emmanuel Paul"
         />
       </div>
+
+      <div className="absolute bottom-0 left-5  sm:bottom-[25vh] sm:left-5">
+        <h2 className="text-5xl font-black uppercase text-[rgba(255,255,255,0.65)] sm:tracking-[0.05em]  tracking-tight sm:text-6xl md:text-7xl text-shadow-gray-500">
+          Full-Stack <br /> Developer
+        </h2>
+      </div>
     </div>
   );
 };
