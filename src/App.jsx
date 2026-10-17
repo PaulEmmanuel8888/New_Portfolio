@@ -1,7 +1,17 @@
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center">
-      <h1 className="text-6xl font-black tracking-tight">THE STACK.</h1>
+    <main className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
+      <div className="relative overflow-hidden">
+        <div className="absolute left-1/2 top-0 z-0 h-40 w-[85%] -translate-x-1/2 rounded-full bg-white/20 blur-[70px]" />
+
+        <div className="relative z-10">
+          <Navbar />
+          <Hero />
+        </div>
+      </div>
     </main>
   );
 }
