@@ -1,5 +1,7 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import FloatingConnect from "./components/FloatingConnect";
+import StatementSection from "./components/StatementSection";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
         <div className="relative z-10">
           <Navbar />
           <Hero />
+          <StatementSection />
+          <FloatingConnect />
         </div>
       </div>
     </main>
