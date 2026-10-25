@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -14,9 +14,26 @@ const Navbar = () => {
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="relative z-20 bg-transparent px-5 py-5 sm:px-8 lg:px-12">
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 px-5 py-5 sm:px-8 lg:px-12 transition-all duration-300 ${
+        scrolled ? " backdrop-blur-md" : "bg-transparent backdrop-blur-none"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <a href="#" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Logo
