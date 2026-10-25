@@ -26,7 +26,7 @@ const StatementSection = () => {
   return (
     <section className="statement-section">
       <div className="statement-container">
-        <p className="statement-label">01 / WHAT I DO</p>
+        <p className="statement-label">WHAT I DO</p>
 
         <h2 className="statement-heading">
           I BUILD SOFTWARE THAT

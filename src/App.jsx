@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import FloatingConnect from "./components/FloatingConnect";
 import StatementSection from "./components/StatementSection";
+import WorkSection from "./components/WorkSection";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
           <Navbar />
           <Hero />
           <StatementSection />
+          <WorkSection />
+
           <FloatingConnect />
         </div>
       </div>
