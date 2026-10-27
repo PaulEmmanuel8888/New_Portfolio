@@ -4,6 +4,7 @@ import FloatingConnect from "./components/FloatingConnect";
 import StatementSection from "./components/StatementSection";
 import WorkSection from "./components/WorkSection";
 import AboutSection from "./components/AboutSection";
+import HowIWorkSection from "./components/HowIWorkSection";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <StatementSection />
           <WorkSection />
           <AboutSection />
+          <HowIWorkSection />
 
           <FloatingConnect />
         </div>
