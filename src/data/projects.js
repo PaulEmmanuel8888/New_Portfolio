@@ -18,8 +18,8 @@ const projects = [
     image: "/projects/between-brackets.png",
     imageAlt: "Between Brackets publishing platform",
     technologies: ["EJS", "Node.js", "Express", "PostgreSQL"],
-    liveUrl: "",
-    sourceUrl: "",
+    liveUrl: "https://between-brackets.onrender.com/",
+    sourceUrl: "https://github.com/PaulEmmanuel8888/Between-Brackets",
   },
   {
     title: "PawSafe",
@@ -29,8 +29,8 @@ const projects = [
     image: "/projects/pawsafe.png",
     imageAlt: "PawSafe web application",
     technologies: ["React", "Express", "Gemini API"],
-    liveUrl: "",
-    sourceUrl: "",
+    liveUrl: "https://pawsafe-1.onrender.com/",
+    sourceUrl: "https://github.com/PaulEmmanuel8888/PawSafe",
   },
 ];
 
