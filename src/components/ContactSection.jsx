@@ -191,13 +191,6 @@ export default function ContactSection() {
           </form>
         </div>
       </div>
-
-      <div className="contact-bottom">
-        <p>Let's build something.</p>
-        <span>
-          Have a good one. <span aria-hidden="true">✳</span>
-        </span>
-      </div>
     </section>
   );
 }

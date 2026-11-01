@@ -7,6 +7,7 @@ import AboutSection from "./components/AboutSection";
 import HowIWorkSection from "./components/HowIWorkSection";
 import SkillsSection from "./components/SkillsSection";
 import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <HowIWorkSection />
           <SkillsSection />
           <ContactSection />
+          <Footer />
 
           <FloatingConnect />
         </div>

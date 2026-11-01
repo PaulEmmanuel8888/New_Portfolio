@@ -3,7 +3,10 @@ import GridBackground from "./GridBackground";
 
 const Hero = () => {
   return (
-    <div className="first relative flex min-h-[550px] justify-center overflow-hidden">
+    <div
+      className="first relative flex min-h-[550px] justify-center overflow-hidden"
+      id="home"
+    >
       <GridBackground />
 
       <div className="absolute left-1/2 top-8 z-0 h-20 w-[60%] -translate-x-1/2 rounded-full bg-white/15 blur-[35px]" />

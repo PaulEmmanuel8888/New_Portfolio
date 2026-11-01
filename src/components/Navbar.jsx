@@ -36,8 +36,8 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <a href="#" className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Logo
+        <a href="#" className="text-2xl font-bold tracking-tight sm:text-2xl">
+          The Stack
         </a>
 
         <div className="hidden items-center gap-10 md:flex">
