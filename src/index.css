@@ -100,7 +100,7 @@ body {
   position: fixed;
   right: 28px;
   bottom: 28px;
-  z-index: 50;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -2224,4 +2224,25 @@ body {
   .footer-bottom {
     font-size: 0.7rem;
   }
+}
+.footer-back-top {
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-back-top:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  transform: translateY(-4px);
+}
+
+.footer-back-top:active {
+  transform: translateY(-1px) scale(0.95);
+}
+.footer-back-top {
+  position: relative;
+  z-index: 10;
 }

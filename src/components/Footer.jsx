@@ -97,7 +97,7 @@ export default function Footer() {
 
           <button
             type="button"
-            className="footer-back-top"
+            className="footer-social-links footer-back-top"
             onClick={scrollToTop}
             aria-label="Back to top"
           >
