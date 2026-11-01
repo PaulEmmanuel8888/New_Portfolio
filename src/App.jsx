@@ -5,6 +5,7 @@ import StatementSection from "./components/StatementSection";
 import WorkSection from "./components/WorkSection";
 import AboutSection from "./components/AboutSection";
 import HowIWorkSection from "./components/HowIWorkSection";
+import SkillsSection from "./components/SkillsSection";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <WorkSection />
           <AboutSection />
           <HowIWorkSection />
+          <SkillsSection />
 
           <FloatingConnect />
         </div>

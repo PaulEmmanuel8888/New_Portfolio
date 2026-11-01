@@ -35,8 +35,8 @@ const AboutSection = () => {
 
           <div className="about-content">
             <p className="about-lead">
-              I'm Emmanuel Paul, a full-stack developer who enjoys turning ideas
-              and real-world problems into useful web applications.
+              I'm Emmanuel, a full-stack developer who enjoys turning ideas and
+              real-world problems into useful web applications.
             </p>
 
             <p className="about-description">

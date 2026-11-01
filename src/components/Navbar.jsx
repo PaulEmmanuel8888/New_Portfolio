@@ -12,6 +12,7 @@ const Navbar = () => {
   const links = [
     { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
     { label: "Contact", href: "#contact" },
   ];
   const [scrolled, setScrolled] = useState(false);
