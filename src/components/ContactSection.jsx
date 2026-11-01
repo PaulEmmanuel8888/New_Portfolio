@@ -1,75 +1,203 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowUpRightFromSquare,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+  faXTwitter,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { faPaperPlane, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xwllrqzz";
 
 const socialLinks = [
   {
-    label: "GitHub",
+    name: "",
+    handle: "@Build_With_E",
+    href: "https://x.com/Build_With_E",
+    icon: faXTwitter,
+  },
+  {
+    name: "GitHub",
+    handle: "PaulEmmanuel8888",
     href: "https://github.com/PaulEmmanuel8888",
     icon: faGithub,
   },
   {
-    label: "LinkedIn",
-    href: "YOUR_LINKEDIN_URL",
-    icon: faLinkedinIn,
+    name: "LinkedIn",
+    handle: "Emmanuel Paul",
+    href: "https://www.linkedin.com/in/emmanuelpaul8888/",
+    icon: faLinkedin,
   },
 ];
 
-const ContactSection = () => {
+export default function ContactSection() {
+  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("paulemmanuel8888@gmail.com");
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+
+    setIsSending(true);
+    setStatus("");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        form.reset();
+        setStatus("Thanks for reaching out! Your message has been sent.");
+      } else {
+        setStatus(
+          result.errors?.map((error) => error.message).join(", ") ||
+            "Something went wrong. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("Unable to send your message. Please try again later.");
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
-        <p className="contact-eyebrow">HAVE A PROJECT OR OPPORTUNITY?</p>
+        <div className="contact-intro">
+          <span className="contact-eyebrow">GET IN TOUCH</span>
 
-        <h2 className="contact-heading">
-          LET'S BUILD
-          <br />
-          SOMETHING <span>USEFUL.</span>
-        </h2>
+          <h2>
+            Have something
+            <br />
+            worth building?
+            <br />
+            <span>Let's talk.</span>
+          </h2>
 
-        <p className="contact-description">
-          Have an idea, a project, or an opportunity to work together? I'd love
-          to hear about it. Let's talk about what you're building.
-        </p>
+          <p className="contact-description">
+            Open to remote opportunities, freelance projects, and
+            collaborations. If you have an idea, an opportunity, or just want to
+            connect, my inbox is open.
+          </p>
 
-        <a href="mailto:YOUR_EMAIL_ADDRESS" className="contact-email-button">
-          <FontAwesomeIcon icon={faEnvelope} />
-          <span>Get in touch</span>
-          <FontAwesomeIcon
-            icon={faArrowUpRightFromSquare}
-            className="contact-email-arrow"
-          />
-        </a>
+          <div className="contact-direct">
+            <span className="contact-label">DIRECT</span>
 
-        <div className="contact-bottom">
-          <p className="contact-bottom-label">FIND ME ELSEWHERE</p>
+            <div className="contact-email-row">
+              <a href="mailto:paulemmanuel8888@gmail.com">
+                paulemmanuel8888@gmail.com
+              </a>
+
+              <button
+                type="button"
+                className="contact-copy-button"
+                onClick={copyEmail}
+                aria-label="Copy email address"
+              >
+                {copied ? "Copied" : "Copy"}
+              </button>
+            </div>
+          </div>
 
           <div className="contact-socials">
-            {socialLinks.map((link) => (
+            {socialLinks.map((social) => (
               <a
-                key={link.label}
-                href={link.href}
+                key={social.name}
+                href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={link.label}
                 className="contact-social-link"
               >
-                <FontAwesomeIcon icon={link.icon} />
-                <span>{link.label}</span>
-                <FontAwesomeIcon
-                  icon={faArrowUpRightFromSquare}
-                  className="contact-social-arrow"
-                />
+                <span className="contact-social-icon">
+                  <FontAwesomeIcon icon={social.icon} />
+                </span>
+
+                <span className="contact-social-name">{social.name}</span>
+                <span className="contact-social-handle">{social.handle}</span>
               </a>
             ))}
           </div>
         </div>
+
+        <div className="contact-form-wrapper">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="contact-field">
+              <label htmlFor="contact-email">Your Email</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder="you@company.com"
+                required
+              />
+            </div>
+
+            <div className="contact-field">
+              <label htmlFor="contact-subject">Subject</label>
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                placeholder="A role, a project, a hello"
+                required
+              />
+            </div>
+
+            <div className="contact-field">
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder="Tell me a bit about what you're working on."
+                rows="6"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="contact-submit rounded-2xl"
+              disabled={isSending}
+            >
+              <span>{isSending ? "Sending..." : "Send message"}</span>
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </button>
+
+            {status && (
+              <p className="contact-form-status" role="status">
+                {status}
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
+
+      <div className="contact-bottom">
+        <p>Let's build something.</p>
+        <span>
+          Have a good one. <span aria-hidden="true">✳</span>
+        </span>
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}
