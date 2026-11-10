@@ -1,4 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const phrases = [
   "solves real problems.",
@@ -9,6 +14,59 @@ const phrases = [
 const StatementSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          once: true,
+        },
+        defaults: {
+          ease: "power3.out",
+        },
+      });
+
+      tl.from(".statement-label", {
+        y: 15,
+        opacity: 0,
+        duration: 0.6,
+      })
+        .from(
+          ".statement-heading",
+          {
+            x: -100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power3.out",
+          },
+          "-=0.2",
+        )
+        .from(
+          ".statement-description",
+          {
+            y: 25,
+            opacity: 0,
+            duration: 0.8,
+          },
+          "-=0.4",
+        )
+        .from(
+          ".statement-actions a",
+          {
+            y: 15,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+          },
+          "-=0.3",
+        );
+    },
+    { scope: sectionRef },
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,7 +82,8 @@ const StatementSection = () => {
   }, []);
 
   return (
-    <section className="statement-section">
+    <section className="statement-section" ref={sectionRef}>
+      {" "}
       <div className="statement-container">
         <p className="statement-label">WHAT I DO</p>
 
