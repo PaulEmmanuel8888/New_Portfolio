@@ -1,8 +1,37 @@
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import projects from "../data/projects";
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 const WorkSection = () => {
+  const workRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray(".project-card");
+
+      cards.forEach((card, index) => {
+        gsap.from(card, {
+          x: index % 2 === 0 ? -100 : 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 50%",
+            once: true,
+          },
+        });
+      });
+    },
+    { scope: workRef },
+  );
   return (
-    <section className="work-section" id="work">
+    <section className="work-section" id="work" ref={workRef}>
+      {" "}
       <div className="work-container">
         <div className="work-header">
           <h2>
